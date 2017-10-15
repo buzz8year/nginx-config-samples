@@ -1,7 +1,7 @@
 server {
 
     listen       80; # listen for IPv4
-    #listen       [::]:80 ipv6only=on; # listen for IPv6
+    # listen       [::]:80 ipv6only=on; # listen for IPv6
 
     server_name  500sales.inmrkt.ml;
 
@@ -25,10 +25,10 @@ server {
        	
 	# check the www.conf file to see if PHP-FPM is listening on a socket or port
 
-	# fastcgi_pass  127.0.0.1:9000; # listen for a port
-	fastcgi_split_path_info ^(.+\.php)(/.+)$;
+	# fastcgi_pass  127.0.0.1:9000;
+	# fastcgi_split_path_info ^(.+\.php)(/.+)$;
         
-	fastcgi_pass  unix:/var/run/php/php7.1-fpm.sock; # listen for a socket
+	fastcgi_pass  unix:/var/run/php/php7.1-fpm.sock;
         fastcgi_param  SCRIPT_FILENAME $document_root$fastcgi_script_name;
         
 	try_files  $uri /backend/web$uri =404;
@@ -63,10 +63,10 @@ server {
             
 	    # check the www.conf file to see if PHP-FPM is listening on a socket or port
 
-	    # fastcgi_pass  127.0.0.1:9000; # listen for a port
-	    fastcgi_split_path_info ^(.+\.php)(/.+)$;
+	    # fastcgi_pass  127.0.0.1:9000;
+	    # fastcgi_split_path_info ^(.+\.php)(/.+)$;
             
-	    fastcgi_pass  unix:/var/run/php/php7.1-fpm.sock; # listen for a socket
+	    fastcgi_pass  unix:/var/run/php/php7.1-fpm.sock;
             fastcgi_param  SCRIPT_FILENAME $document_root/$1;
 
             try_files  $uri /frontend/web/$1$is_args$args;
