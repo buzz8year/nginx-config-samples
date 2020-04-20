@@ -1,0 +1,20 @@
+server {
+
+        server_name tass.ml;
+        # server_tokens off;
+
+
+        root /var/www/tass.ml/html;
+        index index.php index.html index.htm;
+
+
+        location / {
+                proxy_pass http://tass.ml:8112;
+                proxy_set_header X-Real-IP $remote_addr;
+                proxy_set_header X-Forwarded-Proto $scheme;
+                proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+                proxy_set_header X-Forwarded-Host $http_host;
+        }
+
+
+}
